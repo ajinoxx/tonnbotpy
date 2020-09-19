@@ -8,7 +8,7 @@ myID = 191334024612937729
 bellsID = 756194795411603547
 studentID = 543187460021288960
 
-client = commands.Bot(command_prefix = '..')
+client = commands.Bot(command_prefix = 't!')
 
 @client.event
 async def on_ready():
