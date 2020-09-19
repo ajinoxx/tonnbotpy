@@ -44,6 +44,8 @@ async def on_message(message):
     else:
         if message.content == "Period 1 starts in 5 minutes!":
             await message.send.channel('Are we ready kiddies?')
+            
+    await bot.process_commands(message)
 
 
 
