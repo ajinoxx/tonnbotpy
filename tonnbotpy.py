@@ -18,9 +18,9 @@ async def on_ready():
 async def on_message(message):
     if message.channel.id != bellsID and discord.utils.find(lambda r: r.id != botID, message.author.roles):
         msgStr = message.content.lower()
-        if msgStr.startsWith("what") and len(msgStr) <= 6:
+        if msgStr.startswith("what") and len(msgStr) <= 6:
             await message.channel.send('Am I talking to myself?')
-        elif msgStr.startsWith("http") and "youtu" in msgStr:
+        elif msgStr.startswith("http") and "youtu" in msgStr:
             await message.channel.send("Live demo?")
         response = random.randint(1, 100)
         if response < 3:
