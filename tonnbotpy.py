@@ -8,15 +8,24 @@ myID = 191334024612937729
 bellsID = 756194795411603547
 botID = 543620408117690378
 
-client = commands.Bot(command_prefix = 't!')
+client = commands.Bot(command_prefix = '..')
 
 @client.event
 async def on_ready():
     print("We ready kiddies?")
 
+@client.command(aliases=['t'])
+async def test(ctx):
+    if ctx.author.id == myID:
+        await ctx.send("You're sexy Buechie!")
+    else:
+        await ctx.send("Check your DMs ;)")
+        await ctx.author.dm_channel.send("I hope this isn't sexual harassment.")
+
 @client.event
 async def on_message(message):
     if message.channel.id != bellsID and discord.utils.find(lambda r: r.id != botID, message.author.roles):
+        print("Message is not in bells and it is not made by a bot")
         msgStr = message.content.lower()
         if msgStr.startswith("what") and len(msgStr) <= 6:
             await message.channel.send('Am I talking to myself?')
@@ -35,12 +44,6 @@ async def on_message(message):
         if message.content == "Period 1 starts in 5 minutes!":
             await message.send.channel('Are we ready kiddies?')
 
-@client.command(aliases=['t'])
-async def test(ctx):
-    if ctx.author.id == myID:
-        await ctx.send("You're sexy Buechie!")
-    else:
-        await ctx.send("Check your DMs ;)")
-        await ctx.author.dm_channel.send("I hope this isn't sexual harassment.")
+
 
 client.run(os.environ['token'])
